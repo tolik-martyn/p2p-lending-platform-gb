@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrower Details</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Borrower Details</h2>
+    <p>Borrower ID: <span th:text="${borrower.id}"></span></p>
+    <p>User ID: <span th:text="${borrower.userId}"></span></p>
+    <p>First Name: <span th:text="${borrower.userDto.firstName}"></span></p>
+    <p>Last Name: <span th:text="${borrower.userDto.lastName}"></span></p>
+    <p>Email: <span th:text="${borrower.userDto.email}"></span></p>
+    <a href="/borrowers" class="btn">Back</a>
+</div>
+</body>
+</html>

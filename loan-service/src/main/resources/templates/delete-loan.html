@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Loan</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Delete Loan</h2>
+    <p>Are you sure you want to delete loan with ID <span th:text="${loanId}"></span>?</p>
+    <form method="post" th:action="@{/loans/{loanId}/delete(loanId=${loanId})}">
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+        <a href="/loans" class="btn btn-primary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

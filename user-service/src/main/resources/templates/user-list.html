@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>User List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <a th:href="@{/users/{userId}(userId=${user.id})}" class="btn btn-details">Details</a>
+                <a th:href="@{/users/{userId}/delete(userId=${user.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/users/{userId}/update(userId=${user.id})}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/users/add" class="btn">Add User</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Details</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Loan Details</h2>
+
+    <p><b>ID Loan: </b><span th:text="${loan.id}"></span></p>
+
+    <p><b>Lender: </b></p>
+    <p>ID Lender: <span th:text="${loan.lenderId}"></span></p>
+    <p>ID User: <span th:text="${loan.lenderDto.userId}"></span></p>
+    <p>First Name: <span th:text="${loan.userLenderDto.firstName}"></span></p>
+    <p>Last Name: <span th:text="${loan.userLenderDto.lastName}"></span></p>
+    <p>Email: <span th:text="${loan.userLenderDto.email}"></span></p>
+
+    <p><b>Borrower: </b></p>
+    <p>ID Borrower: <span th:text="${loan.borrowerId}"></span></p>
+    <p>ID User: <span th:text="${loan.borrowerDto.userId}"></span></p>
+    <p>First Name: <span th:text="${loan.userBorrowerDto.firstName}"></span></p>
+    <p>Last Name: <span th:text="${loan.userBorrowerDto.lastName}"></span></p>
+    <p>Email: <span th:text="${loan.userBorrowerDto.email}"></span></p>
+
+    <p><b>Loan amount: </b><span th:text="${loan.loanAmount}"></span></p>
+    <p><b>Interest rate: </b><span th:text="${loan.interestRate}"></span></p>
+    <p><b>Issuance date: </b><span th:text="${loan.issuanceDate}"></span></p>
+    <p><b>Term in months: </b><span th:text="${loan.termInMonths}"></span></p>
+
+    <a href="/loans" class="btn">Back</a>
+</div>
+</body>
+</html>

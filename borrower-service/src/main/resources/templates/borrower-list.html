@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrower List</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Borrower List</h2>
+    <table>
+        <tr>
+            <th>Borrower ID</th>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="borrower : ${borrowers}">
+            <td th:text="${borrower.id}"></td>
+            <td th:text="${borrower.userId}"></td>
+            <td th:text="${borrower.userDto.firstName}"></td>
+            <td th:text="${borrower.userDto.lastName}"></td>
+            <td th:text="${borrower.userDto.email}"></td>
+            <td>
+                <a th:href="@{/borrowers/{borrowerId}(borrowerId=${borrower.id})}" class="btn btn-details">Details</a>
+                <a th:href="@{/borrowers/{borrowerId}/delete(borrowerId=${borrower.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/borrowers/{borrowerId}/update(borrowerId=${borrower.id})}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/borrowers/add" class="btn">Add Borrower</a>
+</div>
+</body>
+</html>

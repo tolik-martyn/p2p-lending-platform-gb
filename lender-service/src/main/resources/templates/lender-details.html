@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lender Details</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Lender Details</h2>
+    <p>Lender ID: <span th:text="${lender.id}"></span></p>
+    <p>User ID: <span th:text="${lender.userId}"></span></p>
+    <p>First Name: <span th:text="${lender.userDto.firstName}"></span></p>
+    <p>Last Name: <span th:text="${lender.userDto.lastName}"></span></p>
+    <p>Email: <span th:text="${lender.userDto.email}"></span></p>
+    <a href="/lenders" class="btn">Back</a>
+</div>
+</body>
+</html>

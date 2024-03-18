@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Add User</h2>
+    <form method="post" th:object="${user}" th:action="@{/users/add}">
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}"/><br/>
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}"/><br/>
+        <label>Email:</label>
+        <input type="text" th:field="*{email}"/><br/>
+        <input type="submit" value="Add" class="btn"/>
+        <a href="/users" class="btn btn-primary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

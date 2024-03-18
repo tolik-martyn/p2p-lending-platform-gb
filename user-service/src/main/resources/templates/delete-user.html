@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete User</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Delete User</h2>
+    <p>Are you sure you want to delete user with ID <span th:text="${userId}"></span>?</p>
+    <form method="post" th:action="@{/users/{userId}/delete(userId=${userId})}">
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+        <a href="/users" class="btn btn-primary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

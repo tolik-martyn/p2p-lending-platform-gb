@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lender List</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Lender List</h2>
+    <table>
+        <tr>
+            <th>Lender ID</th>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="lender : ${lenders}">
+            <td th:text="${lender.id}"></td>
+            <td th:text="${lender.userId}"></td>
+            <td th:text="${lender.userDto.firstName}"></td>
+            <td th:text="${lender.userDto.lastName}"></td>
+            <td th:text="${lender.userDto.email}"></td>
+            <td>
+                <a th:href="@{/lenders/{lenderId}(lenderId=${lender.id})}" class="btn btn-details">Details</a>
+                <a th:href="@{/lenders/{lenderId}/delete(lenderId=${lender.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/lenders/{lenderId}/update(lenderId=${lender.id})}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/lenders/add" class="btn">Add Lender</a>
+</div>
+</body>
+</html>

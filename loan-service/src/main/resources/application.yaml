@@ -1,0 +1,32 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: loan-service
+  cloud:
+    discovery:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5435/loanservice-db
+    username: admin
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+eureka:
+  instance:
+    hostname: localhost
+
+url:
+  gateway: http://localhost:8080/loans
+  userservice: http://localhost:8081/api/users/{userId}
+  lenderservice: http://localhost:8082/api/lenders/{lenderId}
+  borrowerservice: http://localhost:8083/api/borrowers/{borrowerId}

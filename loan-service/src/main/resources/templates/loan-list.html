@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan List</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Loan List</h2>
+    <table>
+        <tr>
+            <th>Loan ID</th>
+            <th>Lender ID</th>
+            <th>Borrower ID</th>
+            <th>Loan amount</th>
+            <th>Interest rate</th>
+            <th>Issuance date</th>
+            <th>Term in months</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="loan : ${loans}">
+            <td th:text="${loan.id}"></td>
+            <td th:text="${loan.lenderId}"></td>
+            <td th:text="${loan.borrowerId}"></td>
+            <td th:text="${loan.loanAmount}"></td>
+            <td th:text="${loan.interestRate}"></td>
+            <td th:text="${loan.issuanceDate}"></td>
+            <td th:text="${loan.termInMonths}"></td>
+            <td>
+                <a th:href="@{/loans/{loanId}(loanId=${loan.id})}" class="btn btn-details">Details</a>
+                <a th:href="@{/loans/{loanId}/delete(loanId=${loan.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/loans/{loanId}/update(loanId=${loan.id})}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/loans/add" class="btn">Add Loan</a>
+</div>
+</body>
+</html>

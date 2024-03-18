@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Loan</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Update Loan</h2>
+    <form method="post" th:object="${loan}" th:action="@{/loans/{loanId}/update(loanId=${loan.id})}">
+        <label for="lenderId">Lender ID:</label>
+        <input type="number" min="1" step="1" id="lenderId" name="lenderId" th:field="*{lenderId}" required><br/>
+        <label for="borrowerId">Borrower ID:</label>
+        <input type="number" min="1" step="1" id="borrowerId" name="borrowerId" th:field="*{borrowerId}" required><br/>
+        <label for="loanAmount">Loan amount:</label>
+        <input type="number" min="0.01" step="0.01" id="loanAmount" name="loanAmount" th:field="*{loanAmount}" required><br/>
+        <label for="interestRate">Interest rate:</label>
+        <input type="number" min="0.00" max="100.00" step="0.01" id="interestRate" name="interestRate"
+               th:field="*{interestRate}" required><br/>
+        <label for="issuanceDate">Issuance date:</label>
+        <input type="date" id="issuanceDate" name="issuanceDate" th:field="*{issuanceDate}" required><br/>
+        <label for="termInMonths">Term in months:</label>
+        <input type="number" min="1" step="1" id="termInMonths" name="termInMonths" th:field="*{termInMonths}" required><br/>
+        <input type="submit" value="Update" class="btn"/>
+        <a href="/loans" class="btn btn-primary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

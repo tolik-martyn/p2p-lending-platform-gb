@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Borrower</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Add Borrower</h2>
+    <form method="post" th:object="${borrower}" th:action="@{/borrowers/add}">
+        <div>
+            <label for="userId">User ID:</label>
+            <input type="number" min="1" step="1" id="userId" name="userId" th:field="*{userId}" required><br/>
+            <input type="submit" value="Add" class="btn"/>
+            <a href="/borrowers" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: userservice
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+
+        - id: lenderservice
+          uri: lb://lender-service
+          predicates:
+            - Path=/lenders/**
+
+        - id: borrowerservice
+          uri: lb://borrower-service
+          predicates:
+            - Path=/borrowers/**
+
+        - id: loanservice
+          uri: lb://loan-service
+          predicates:
+            - Path=/loans/**
