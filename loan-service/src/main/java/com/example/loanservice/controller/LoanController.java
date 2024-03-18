@@ -8,6 +8,8 @@ import com.example.loanservice.model.LenderDto;
 import com.example.loanservice.model.Loan;
 import com.example.loanservice.model.UserDto;
 import com.example.loanservice.service.LoanService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/loans")
+@Tag(name = "Loan Controller", description = "Endpoints for managing loans")
 public class LoanController {
     private final LoanService loanService;
     private final RestTemplate restTemplate;
@@ -44,6 +47,7 @@ public class LoanController {
     }
 
     @GetMapping
+    @Operation(summary = "Get all loans", description = "Returns a list of all loans.")
     public String getAllLoans(Model model) {
         List<Loan> loans = loanService.getAllLoans();
 
@@ -63,6 +67,7 @@ public class LoanController {
     }
 
     @GetMapping("/{loanId}")
+    @Operation(summary = "Get loan by ID", description = "Returns details of a loan based on the provided ID.")
     public String getLoanById(@PathVariable("loanId") Long id, Model model) {
         Loan loan = loanService.getLoanById(id);
 
@@ -80,12 +85,14 @@ public class LoanController {
     }
 
     @GetMapping("/add")
+    @Operation(summary = "Show form to create loan", description = "Displays a form for creating a new loan.")
     public String showCreateLoanForm(Model model) {
         model.addAttribute("loan", new Loan());
         return "add-loan";
     }
 
     @PostMapping("/add")
+    @Operation(summary = "Create loan", description = "Creates a new loan with the provided details.")
     public String createLoan(@ModelAttribute Loan loan) {
         getDtoById(lenderserviceApiUrl, LenderDto.class, loan.getLenderId());
         getDtoById(borrowerserviceApiUrl, BorrowerDto.class, loan.getBorrowerId());
@@ -94,6 +101,7 @@ public class LoanController {
     }
 
     @GetMapping("/{loanId}/delete")
+    @Operation(summary = "Show form to delete loan", description = "Displays a confirmation form for deleting a loan.")
     public String showDeleteLoanForm(@PathVariable("loanId") Long id, Model model) {
         loanService.getLoanById(id);
         model.addAttribute("loanId", id);
@@ -101,18 +109,21 @@ public class LoanController {
     }
 
     @PostMapping("/{loanId}/delete")
+    @Operation(summary = "Delete loan", description = "Deletes the loan with the provided ID.")
     public String deleteLoan(@PathVariable("loanId") Long id) {
         loanService.deleteLoan(id);
         return "redirect:" + gatewayUrl;
     }
 
     @GetMapping("/{loanId}/update")
+    @Operation(summary = "Show form to update loan", description = "Displays a form for updating loan details.")
     public String showUpdateLoanForm(@PathVariable("loanId") Long id, Model model) {
         model.addAttribute("loan", loanService.getLoanById(id));
         return "update-loan";
     }
 
     @PostMapping("/{loanId}/update")
+    @Operation(summary = "Update loan", description = "Updates the details of the loan with the provided ID.")
     public String updateLoan(@PathVariable("loanId") Long id, @ModelAttribute Loan loan) {
         getDtoById(lenderserviceApiUrl, LenderDto.class, loan.getLenderId());
         getDtoById(borrowerserviceApiUrl, BorrowerDto.class, loan.getBorrowerId());

@@ -10,7 +10,7 @@
     <h2>Update Lender</h2>
     <form method="post" th:object="${lender}" th:action="@{/lenders/{lenderId}/update(lenderId=${lender.id})}">
         <label for="userId">User ID:</label>
-        <input type="number" min="1" step="1" id="userId" name="userId" th:field="*{userId}" required>
+        <input type="number" min="1" step="1" id="userId" name="userId" th:field="*{userId}" required><br/>
         <input type="submit" value="Update" class="btn"/>
         <a href="/lenders" class="btn btn-primary">Cancel</a>
     </form>

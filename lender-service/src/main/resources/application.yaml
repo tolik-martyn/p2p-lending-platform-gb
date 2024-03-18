@@ -25,8 +25,6 @@ eureka:
   instance:
     hostname: localhost
 
-gateway:
-  url: http://localhost:8080/lenders
-
-userservice:
-  url: http://localhost:8081/api/users/{userId}
+url:
+  gateway: http://localhost:8080/lenders
+  userservice: http://localhost:8081/api/users/{userId}

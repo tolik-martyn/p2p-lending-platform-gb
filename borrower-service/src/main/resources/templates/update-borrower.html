@@ -11,7 +11,7 @@
     <form method="post" th:object="${borrower}"
           th:action="@{/borrowers/{borrowerId}/update(borrowerId=${borrower.id})}">
         <label for="userId">User ID:</label>
-        <input type="number" min="1" step="1" id="userId" name="userId" th:field="*{userId}" required>
+        <input type="number" min="1" step="1" id="userId" name="userId" th:field="*{userId}" required><br/>
         <input type="submit" value="Update" class="btn"/>
         <a href="/borrowers" class="btn btn-primary">Cancel</a>
     </form>
