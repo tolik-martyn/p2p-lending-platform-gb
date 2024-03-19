@@ -78,6 +78,7 @@ public class BorrowerController {
     @GetMapping("/{borrowerId}/delete")
     @Operation(summary = "Show form to delete borrower", description = "Displays a confirmation form for deleting a borrower.")
     public String showDeleteBorrowerForm(@PathVariable("borrowerId") Long id, Model model) {
+        // Проверка на наличие заемщика с указанным id
         borrowerService.getBorrowerById(id);
         model.addAttribute("borrowerId", id);
         return "delete-borrower";

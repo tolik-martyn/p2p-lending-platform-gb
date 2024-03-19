@@ -103,6 +103,7 @@ public class LoanController {
     @GetMapping("/{loanId}/delete")
     @Operation(summary = "Show form to delete loan", description = "Displays a confirmation form for deleting a loan.")
     public String showDeleteLoanForm(@PathVariable("loanId") Long id, Model model) {
+        // Проверка на наличие кредита с указанным id
         loanService.getLoanById(id);
         model.addAttribute("loanId", id);
         return "delete-loan";

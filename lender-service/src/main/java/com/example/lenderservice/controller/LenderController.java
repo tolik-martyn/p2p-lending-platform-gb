@@ -78,6 +78,7 @@ public class LenderController {
     @GetMapping("/{lenderId}/delete")
     @Operation(summary = "Show form to delete lender", description = "Displays a confirmation form for deleting a lender.")
     public String showDeleteLenderForm(@PathVariable("lenderId") Long id, Model model) {
+        // Проверка на наличие кредитора с указанным id
         lenderService.getLenderById(id);
         model.addAttribute("lenderId", id);
         return "delete-lender";
