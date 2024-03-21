@@ -30,3 +30,34 @@ url:
   userservice: http://localhost:8081/api/users/{userId}
   lenderservice: http://localhost:8082/api/lenders/{lenderId}
   borrowerservice: http://localhost:8083/api/borrowers/{borrowerId}
+
+
+# Actuator:
+
+info:
+  app:
+    name: "This is a loan service"
+    version: "1.0.0"
+    description: "Credit management (adding, viewing, changing, deleting)."
+
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, loggers, prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true

@@ -30,3 +30,33 @@ spring:
           uri: lb://loan-service
           predicates:
             - Path=/loans/**
+
+# Actuator:
+
+info:
+  app:
+    name: "This is an api gateway"
+    version: "1.0.0"
+    description: "Centralized login for processing all requests."
+
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, loggers, prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true
