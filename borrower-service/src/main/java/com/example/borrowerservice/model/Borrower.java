@@ -3,7 +3,7 @@ package com.example.borrowerservice.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "borrower")
+@Table(name = "borrowers")
 public class Borrower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

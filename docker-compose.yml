@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  userservice:
+    build: ./user-service
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: userservice-db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+
+  lenderservice:
+    build: ./lender-service
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: lenderservice-db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+
+  borrowerservice:
+    build: ./borrower-service
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: borrowerservice-db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+
+  loanservice:
+    build: ./loan-service
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: loanservice-db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
