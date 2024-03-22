@@ -24,6 +24,7 @@ public class SecurityConfig {
                                 .requestMatchers("/loans/*").hasAnyRole("ADMIN", "USER")
                                 .requestMatchers("/loans/*/update").hasAnyRole("ADMIN", "USER")
                                 .requestMatchers("/loans/*/delete").hasRole("ADMIN")
+                                .requestMatchers("/actuator/**").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->

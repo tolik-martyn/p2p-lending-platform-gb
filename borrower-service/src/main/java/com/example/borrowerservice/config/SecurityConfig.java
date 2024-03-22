@@ -21,6 +21,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/api/borrowers/**").permitAll()
+                                .requestMatchers("/actuator/**").permitAll()
                                 .requestMatchers("/borrowers").hasAnyRole("ADMIN", "USER")
                                 .requestMatchers("/borrowers/*/**").hasRole("ADMIN")
                                 .anyRequest().authenticated())
